@@ -1,0 +1,342 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #faf5eb;
+    color: #333;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 18px;
+    padding: 30px;
+    width: 100%;
+    max-width: 480px;
+    margin: auto;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+h1 {
+    color: #d84315;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+/* Realistic bowl styling */
+.bowl-wrapper {
+    position: relative;
+    margin: 0 auto 40px;
+    width: 320px;
+    height: 320px;
+}
+
+.bowl-shadow {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 20px;
+    background: rgba(0,0,0,0.15);
+    border-radius: 50%;
+    filter: blur(10px);
+    z-index: -1;
+}
+
+.bowl {
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom right, #ffe0f0, #ffc0d8);
+    border: 8px solid #ffb0c8;
+    border-radius: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.5s ease;
+}
+
+.bowl:before {
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+/* Bowl glow effect when served */
+.bowl.served {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Steam effect */
+.steam {
+    display: none;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+}
+
+.steam.active {
+    display: block;
+}
+
+.steam-particle {
+    position: absolute;
+    width: 10px;
+    height: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    animation: steamRise 3s infinite ease-in-out;
+    opacity: 0;
+}
+
+.steam-particle:nth-child(1) {
+    left: -20px;
+    animation-delay: 0.2s;
+}
+
+.steam-particle:nth-child(2) {
+    left: 0;
+    animation-delay: 0.6s;
+}
+
+.steam-particle:nth-child(3) {
+    left: 20px;
+    animation-delay: 0.1s;
+}
+
+.steam-particle:nth-child(4) {
+    left: 40px;
+    animation-delay: 0.4s;
+}
+
+@keyframes steamRise {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-70px) scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-120px) scale(2);
+        opacity: 0;
+    }
+}
+
+/* Ingredient styling */
+.ingredient {
+    position: absolute;
+    z-index: 2;
+    transition: transform 0.2s;
+    filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.2));
+}
+
+/* Pasta styling - Penne (INCREASED SIZE) */
+.pasta {
+    width: 35px;
+    height: 12px;
+    background-color: #f8e8a9;
+    border-radius: 6px;
+    border: 1px solid #e0ca7c;
+    transform: rotate(var(--rotate));
+    position: absolute;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.pasta:before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    background-color: transparent;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Cheese styling - Shredded (INCREASED SIZE) */
+.cheese {
+    width: 22px;
+    height: 5px;
+    background-color: #fff9c4;
+    position: absolute;
+    transform: rotate(var(--rotate));
+    opacity: 0.9;
+    border-radius: 2px;
+}
+
+/* Basil styling */
+.basil {
+    width: 25px;
+    height: 35px;
+    background-color: #4caf50;
+    border-radius: 50% 20% 50% 20%;
+    position: absolute;
+    transform: rotate(var(--rotate)) scale(0.8);
+    opacity: 0.85;
+}
+
+/* Mushroom styling */
+.mushroom {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(to bottom, #bca9a0, #a89182);
+    border-radius: 50% 50% 45% 45%;
+    position: absolute;
+    transform: rotate(var(--rotate));
+}
+
+/* Olive styling */
+.olive {
+    width: 18px;
+    height: 18px;
+    background-color: #3e2723;
+    border-radius: 50%;
+    position: absolute;
+    transform: rotate(var(--rotate));
+}
+
+.olive:before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 8px;
+    height: 8px;
+    background-color: #1b0000;
+    border-radius: 50%;
+}
+
+.sauce {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    left: 5%;
+    z-index: 1;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+    border-radius: 50%;
+}
+
+.sauce-tomato {
+    background: radial-gradient(circle, rgba(227, 76, 38, 0.9) 0%, rgba(198, 40, 40, 0.4) 100%);
+}
+
+.sauce-pesto {
+    background: radial-gradient(circle, rgba(67, 160, 71, 0.9) 0%, rgba(27, 94, 32, 0.4) 100%);
+}
+
+.sauce-alfredo {
+    background: radial-gradient(circle, rgba(255, 248, 225, 0.9) 0%, rgba(245, 223, 174, 0.5) 100%);
+}
+
+/* Buttons */
+.button-group {
+    margin-bottom: 30px;
+}
+
+.button-group h3 {
+    color: #7a5d3a;
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.buttons, .sauce-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+button {
+    padding: 12px 18px;
+    background-color: #f97f56;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+button:hover {
+    background-color: #e26242;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.btn-icon {
+    font-size: 18px;
+}
+
+/* Footer actions */
+.footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reset-btn {
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+.reset-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.bon-appetit {
+    background-color: #4caf50;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.bon-appetit:hover {
+    background-color: #3d9140;
+}
+
+.new-bowl-btn {
+    background-color: #9c27b0;
+    color: white;
+}
+
+.new-bowl-btn:hover {
+    background-color: #7b1fa2;
+}
