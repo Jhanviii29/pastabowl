@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasta Bowl Builder</title>
+    <!-- Fix for CSS path - using direct path -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🍝 Build Your Pasta Bowl</h1>
+        
+        <div class="bowl-wrapper">
+            <div class="bowl" id="bowl">
+                <div id="sauce-layer" class="sauce"></div>
+                <!-- Ingredients will be added dynamically -->
+                <div class="steam" id="steam">
+                    <div class="steam-particle"></div>
+                    <div class="steam-particle"></div>
+                    <div class="steam-particle"></div>
+                    <div class="steam-particle"></div>
+                </div>
+            </div>
+            <div class="bowl-shadow"></div>
+            <div class="utensil-container">
+                <div class="fork" id="fork"></div>
+                <div class="fork-handle"></div>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <h3>Add Ingredients</h3>
+            <div class="buttons">
+                <button onclick="addToBowl('pasta')"><span class="btn-icon">🍝</span> Penne</button>
+                <button onclick="addToBowl('cheese')"><span class="btn-icon">🧀</span> Cheese</button>
+                <button onclick="addToBowl('basil')"><span class="btn-icon">🌿</span> Basil</button>
+                <button onclick="addToBowl('mushroom')"><span class="btn-icon">🍄</span> Mushroom</button>
+                <button onclick="addToBowl('olive')"><span class="btn-icon">🫒</span> Olives</button>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <h3>Choose Your Sauce</h3>
+            <div class="sauce-options">
+                <button onclick="addSauce('tomato')"><span class="btn-icon">🍅</span> Tomato</button>
+                <button onclick="addSauce('pesto')"><span class="btn-icon">🌱</span> Pesto</button>
+                <button onclick="addSauce('alfredo')"><span class="btn-icon">🥛</span> Alfredo</button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <button class="reset-btn" onclick="resetBowl()">Clear Bowl</button>
+            <button class="bon-appetit" onclick="bonAppetit()">Bon Appétit!</button>
+            <button class="new-bowl-btn" onclick="newBowl()">New Bowl</button>
+        </div>
+    </div>
+    
+    <!-- Fix for JS path - using direct path -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
